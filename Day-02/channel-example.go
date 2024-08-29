@@ -14,6 +14,7 @@ type Order struct {
 // processOrder simulates order processing and sends status through a channel
 func processOrder(orderID int, statusChannel chan Order) {
 	// Simulating some processing time
+	fmt.Println("processing order",orderID)
 	time.Sleep(time.Second * 2)
 	// Sending processed order status back through the channel
 	statusChannel <- Order{ID: orderID, Status: "Completed"}
@@ -28,6 +29,7 @@ func main() {
 		go processOrder(i, statusChannel)
 	}
 
+	fmt.Println("test")
 	// Receiving and printing order statuses
 	for i := 1; i <= 5; i++ {
 		processedOrder := <-statusChannel
