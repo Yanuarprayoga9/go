@@ -22,8 +22,8 @@ func (r *Rect) Perimeter() float64 {
 func main () {
 
 	fmt.Println("interface ")
-
-	var w Geometry = Rect{3, 4};
+	test := Rect{3, 4}
+	var w Geometry = &test ;
 	fmt.Println(w.Area())
 	fmt.Println(w.Perimeter());
 }
